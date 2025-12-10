@@ -1,8 +1,10 @@
-This repository provides code and datasets related to the paper: **TG-TSGNet: A Text-Guided Arbitrary-Resolution Terrain Scene Generation Network**.
+This repository provides code and datasets related to the paper: 
+
+### **TG-TSGNet: A Text-Guided Arbitrary-Resolution Terrain Scene Generation Network**.
 
 
 
-#### Dataset Download
+### Dataset Download
 
 [Natural Terrain Scene Data Set (NTSD)](https://drive.google.com/drive/folders/1fEGIvaNngXxSVOGn6fWOLiAo1FC9ApVR?usp=drive_link) from **Terrain Scene Generation Using A Lightweight Vector Quantized Generative Adversarial Network**
 
@@ -10,7 +12,7 @@ This repository provides code and datasets related to the paper: **TG-TSGNet: A 
 
 
 
-#### Installation
+### Installation
 
 Create and activate a new conda environment:
 
@@ -22,7 +24,7 @@ pip install -r requirements.txt
 
 
 
-#### Training
+### Training
 
 To train the ConvMamba-VQGAN model, run:
 
@@ -52,10 +54,9 @@ train.py --image_text_folder xxx --taming --batch_size 32 --vqgan_model_path xxx
 
 
 
-#### Citation
+### Citation
 
 If you find our work useful in your research, please consider citing:
-
 
 
 
