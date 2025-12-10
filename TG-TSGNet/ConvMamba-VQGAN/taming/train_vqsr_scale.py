@@ -927,7 +927,6 @@ if __name__ == "__main__":
         callbacks_cfg = OmegaConf.merge(default_callbacks_cfg, callbacks_cfg)
         trainer_kwargs["callbacks"] = [instantiate_from_config(callbacks_cfg[k]) for k in callbacks_cfg]
 
-        # trainer = Trainer.from_argparse_args(trainer_opt, check_val_every_n_epoch=5, max_epochs=100, resume_from_checkpoint=os.path.join("/data1/yifan/taming-transformers-master/logs/2024-12-03T16-29-27_c2fmn_13/checkpoints/last.ckpt"), **trainer_kwargs)
         
         trainer = Trainer.from_argparse_args(trainer_opt, check_val_every_n_epoch=5, max_epochs=100, **trainer_kwargs)
 
@@ -1010,4 +1009,5 @@ if __name__ == "__main__":
             dst, name = os.path.split(logdir)
             dst = os.path.join(dst, "debug_runs", name)
             os.makedirs(os.path.split(dst)[0], exist_ok=True)
+
             os.rename(logdir, dst)
