@@ -69,7 +69,7 @@ parser.add_argument('--hug', dest='hug', action='store_true')
 parser.add_argument('--bpe_path', type=str,
                     help='path to your BPE json file')
 
-parser.add_argument('--dalle_output_file_name', type=str, default = "dallema",
+parser.add_argument('--output_file_name', type=str, default = "output",
                     help='output_file_name')
 
 parser.add_argument('--fp16', action='store_true',
@@ -171,7 +171,7 @@ def cp_path_to_dir(cp_path, tag):
 WEBDATASET_IMAGE_TEXT_COLUMNS = tuple(args.wds.split(','))
 ENABLE_WEBDATASET = True if len(WEBDATASET_IMAGE_TEXT_COLUMNS) == 2 else False
 
-DALLE_OUTPUT_FILE_NAME = args.dalle_output_file_name + ".pt"
+OUTPUT_FILE_NAME = args.output_file_name + ".pt"
 
 VAE_PATH = args.vae_path
 VQGAN_MODEL_PATH = args.vqgan_model_path
@@ -671,18 +671,17 @@ for epoch in range(resume_epoch, EPOCHS):
     if LR_DECAY:
         distr_scheduler.step(avg_loss)
 
-    save_model(DALLE_OUTPUT_FILE_NAME, epoch=epoch)
+    save_model(OUTPUT_FILE_NAME, epoch=epoch)
 
     if is_root:
         # save trained model to wandb as an artifact every epoch's end
         print(f"Epoch {epoch} ended. Best loss so far: {best_loss}")
         save_artifact(model_config, DALLE_OUTPUT_FILE_NAME)
 
-save_model(DALLE_OUTPUT_FILE_NAME, epoch=epoch)
+save_model(OUTPUT_FILE_NAME, epoch=epoch)
 
 if is_root:
-    wandb.save(DALLE_OUTPUT_FILE_NAME)
-    save_artifact(model_config, DALLE_OUTPUT_FILE_NAME)
-    # wandb.save(DALLE_OUTPUT_FILE_NAME, base_path=save_dir)
-    # save_artifact(model_config, DALLE_OUTPUT_FILE_NAME, save_dir)
+    wandb.save(OUTPUT_FILE_NAME)
+    save_artifact(model_config, OUTPUT_FILE_NAME)
     wandb.finish()
+
