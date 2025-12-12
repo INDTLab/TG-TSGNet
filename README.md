@@ -57,6 +57,13 @@ train.py --image_text_folder xxx --taming --batch_size 32 --vqgan_model_path xxx
 ### Citation
 
 If you find our work useful in your research, please consider citing:
-
+```
+@ARTICLE{TIP_35094_2025,
+    author={Yifan Zhu, Yan Wang, Xinghui Dong},
+    journal={IEEE Transactions on Image Processing}, 
+    title={TG-TSGNet: A Text-Guided Arbitrary-Resolution Terrain Scene Generation Network}, 
+    year={2025},
+    }
+```
 
 
